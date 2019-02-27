@@ -1,19 +1,27 @@
-
+$navbar-default-bg: rgba(0, 0, 0, 0.9);
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: red;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+
 #logo{
   float: left;
   font-size: 1.7em;
-  color: black;
+  color: white;
   text-transform: uppercase;
   letter-spacing: -1px;
   font-weight: bold;
 }
 
 #logo:hover{
-  color: black;
+  color: red;
   text-decoration: none;
 }
 
@@ -45,17 +53,21 @@ a:hover{
   color: red;
 }
 
-h1, h2, h4{
+h1, h2, h4, .control-label{
   color: white;
 }
 
 body{
-  background-color: darkred;
+  background-image: asset-url('background.jpg');
 }
 
 .well{
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.8);
   border-style: none;
+}
+
+img{
+  padding-bottom: 20px;
 }
 
 .restaurante-body{
@@ -90,7 +102,8 @@ footer{
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
-  color: black;
+  color: white;
+  font-weight: bold;
 }
 
 footer small{

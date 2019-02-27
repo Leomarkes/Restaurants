@@ -4,7 +4,7 @@ class RestaurantesController < ApplicationController
 
   def index
     @restaurantes = Restaurante.paginate(page: params[:page], per_page: 5)
-    @comentarios = Comentario.paginate(page: params[:page], per_page: 100)
+    @comentarios = Comentario.all
   end
 
   def new
@@ -22,7 +22,7 @@ class RestaurantesController < ApplicationController
   end
 
   def show
-
+    @comentarios = Comentario.all
   end
 
   def edit
@@ -66,7 +66,7 @@ class RestaurantesController < ApplicationController
     end
 
     def restaurante_params
-      params.require(:restaurante).permit(:name, :description)
+      params.require(:restaurante).permit(:name, :description, :image)
     end
 
     def set_comentario

@@ -1,12 +1,42 @@
 <div align="center" class="row">
   <div class="col-xs-8 col-xs-offset-2">
       <div class="well well-lg">
-        <h2 align="center">Nome: <%= @restaurante.name %> </h2>
-        <h4 class="center description"> <strong>Descrição:</strong></h4>
-        <div class="article-body">
+        <div class="restaurante-title">
+          <h2 align="center">Nome: <%= @restaurante.name %> </h2>
+        </div>
+        <div align="center">
+          <img src="<%= @restaurante.image.medium.url %>">
+        </div>
+        <div class="restaurante-body">
+          <h4 class="center description"> <strong>Descrição:</strong></h4>
           <%= simple_format(@restaurante.description) %>
         </div>
-        <div class="article-actions">
+        <% @n = 0 %>
+        <% @t = 0 %>
+        <% @comentarios.each do |comentario1| %>
+          <% if comentario1.restaurante == @restaurante %>
+            <% @n = comentario1.nota + @n %>
+            <% @t = @t + 1 %>
+            <div class="avaliation-body">
+              <h4>Nota:</h4><%= comentario1.nota %> <br>
+              <h4>Comentário:</h4>"<%= comentario1.description %>"
+              <div class="avaliation-meta-details">
+                <% if comentario1.user == current_user %>
+                  <%= link_to "Edit this avaliation", edit_comentario_path(comentario1), class: "btn btn-xs btn-primary" %>
+                  <%= link_to "Delete this avaliation", comentario_path(comentario1), method: :delete,
+                                                data: {confirm: "Are you sure you want to delete the avaliation?"},
+                                                class: "btn btn-xs btn-danger" %>
+                <% end %>
+                <small>Created by: <%= comentario1.user.username %> </small>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <div class="restaurante-body">
+          <% @nf = Float(@n)/Float(@t) %>
+          <h4>Nota média: </h4> <%= (@nf).round(2) %>
+        </div>
+        <div class="restaurante-actions">
           <%= link_to "View all restaurants", root_path, class: "btn btn-xs btn-success" %>
         </div>
       </div>
