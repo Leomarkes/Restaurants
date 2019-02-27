@@ -1,0 +1,14 @@
+<div align="center" class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+      <div class="well well-lg">
+        <h2 align="center">Nome: <%= @restaurante.name %> </h2>
+        <h4 class="center description"> <strong>Descrição:</strong></h4>
+        <div class="article-body">
+          <%= simple_format(@restaurante.description) %>
+        </div>
+        <div class="article-actions">
+          <%= link_to "View all restaurants", root_path, class: "btn btn-xs btn-success" %>
+        </div>
+      </div>
+    </div>
+  </div>

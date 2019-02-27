@@ -1,0 +1,55 @@
+<% @restaurantes.each do |restaurante| %>
+  <% @n = 0 %>
+  <% @t = 0 %>
+  <% @comentarios.each do |comentario| %>
+    <% if comentario.restaurante == restaurante %>
+      <% @n = comentario.nota + @n %>
+      <% @t = @t + 1 %>
+    <% end %>
+  <% end %>
+  <% @nf = Float(@n)/Float(@t) %>
+  <div align="center" class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="well well-lg">
+        <div class="restaurante-title">
+          <%= link_to restaurante.name, restaurante_path(restaurante) %>
+        </div>
+        <div class="restaurante-body">
+          <%= truncate(restaurante.description, length: 100) %> <br>
+           Nota média: <%= (@nf).round(2) %>
+        </div>
+        <% @comentarios.each do |comentario1| %>
+          <% if comentario1.restaurante == restaurante %>
+            <div class="avaliation-body">
+              <h4>Nota:</h4><%= comentario1.nota %> <br>
+              <h4>Comentário:</h4>"<%= comentario1.description %>"
+              <div class="avaliation-meta-details">
+                <% if comentario1.user == current_user %>
+                  <%= link_to "Edit this avaliation", edit_comentario_path(comentario1), class: "btn btn-xs btn-primary" %>
+                  <%= link_to "Delete this avaliation", comentario_path(comentario1), method: :delete,
+                                                data: {confirm: "Are you sure you want to delete the avaliation?"},
+                                                class: "btn btn-xs btn-danger" %>
+                <% end %>
+                <small>Created by: <%= comentario1.user.username %> </small>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <% @e = 0 %>
+        <% @comentarios.each do |comentario2| %>
+          <% if comentario2.restaurante == restaurante && comentario2.user == current_user %>
+            <% @e = 1 %>
+          <% end %>
+        <% end %>
+        <% if logged_in? && @e != 1 %>
+          <div class="restaurante-actions">
+            <%= link_to "Avaliar", avaliar_restaurante_path(restaurante), class: "btn btn-lg btn-success" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<div align="center">
+  <%= will_paginate %>
+</div>

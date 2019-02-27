@@ -1,0 +1,108 @@
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+#logo{
+  float: left;
+  font-size: 1.7em;
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+#logo:hover{
+  color: black;
+  text-decoration: none;
+}
+
+.btn-xlarge{
+  font-size: 1.7em;
+  background-color: black;
+}
+
+.restaurante-actions{
+  border-top: 1px solid gray;
+  padding-top: 5px;
+}
+
+.description{
+  margin-top: 0;
+}
+
+.restaurante-title{
+  font-weight: bold;
+  font-size: 2.5em;
+  color: red;
+}
+
+a{
+  color: white;
+}
+
+a:hover{
+  color: red;
+}
+
+h1, h2, h4{
+  color: white;
+}
+
+body{
+  background-color: darkred;
+}
+
+.well{
+  background-color: rgba(0, 0, 0, 0.9);
+  border-style: none;
+}
+
+.restaurante-body{
+  border-top: 1px solid gray;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 1.2em;
+  color: red;
+}
+
+.avaliation-body{
+  border-top: 1px solid gray;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 1.1em;
+  color: white;
+}
+
+.avaliation-meta-details{
+  font-size: 0.9em;
+  margin-top: 10px;
+  text-align: right;
+  color: white;
+}
+
+.listing{
+    list-style: none;
+    padding-left: 0px;
+}
+
+footer{
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: black;
+}
+
+footer small{
+  float: left;
+}
+
+footer ul{
+  float: right;
+  list-style: none;
+}
+
+footer ul li{
+  float: left;
+  margin-left: 15px;
+}
