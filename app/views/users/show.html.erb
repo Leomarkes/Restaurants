@@ -1,1 +1,20 @@
-<h1 align="Center"> Welcome to <%= @user.username %>'s page </h1>
+<h1 align="center"> Welcome to <%= @user.username %>'s page </h1>
+<h2 align="center"> Listing all <%= @user.username %>'s avaliations </h2>
+<div align="center" class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <% @comentarios.each do |comentario| %>
+      <% if comentario.user == @user %>
+        <div class="well well-lg">
+          <div class="restaurante-title">
+            <% @rest = comentario.restaurante %>
+            <h2>Restaurante: </h2> <%= link_to comentario.restaurante.name, restaurante_path(@rest) %>
+          </div>
+          <div class="avaliation-body">
+            <h2>Comentário:</h2> <%= comentario.description %>
+            <h2>Nota: </h2> <%= comentario.nota %> <hr>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
